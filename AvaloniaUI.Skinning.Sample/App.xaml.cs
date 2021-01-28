@@ -1,12 +1,13 @@
 using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
+using AvaloniaUI.Skinning.Sample.Views;
+using AvaloniaUI.Skinning.Sample.ViewModels;
 
 namespace AvaloniaUI.Skinning.Sample
 {
     public class App : Application
     {
-        public SkinManager SkinManager = new SkinManager(true);
         public override void Initialize()
         {
             AvaloniaXamlLoader.Load(this);
@@ -18,7 +19,7 @@ namespace AvaloniaUI.Skinning.Sample
             {
                 desktop.MainWindow = new MainWindow()
                 {
-                    DataContext = SkinManager
+                    DataContext = new SkinsViewModel()
                 };
             }
 

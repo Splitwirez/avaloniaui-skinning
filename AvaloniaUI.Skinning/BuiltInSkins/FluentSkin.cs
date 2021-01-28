@@ -4,6 +4,7 @@ using Avalonia.Markup.Xaml.Styling;
 using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using Avalonia.Themes.Fluent;
 
 namespace AvaloniaUI.Skinning
 {
@@ -28,10 +29,10 @@ namespace AvaloniaUI.Skinning
         {
             var styles = new Styles();
             
-            Uri lightsUri = new Uri(@"avares://Avalonia.Themes.Fluent/Accents/FluentLight.xaml");
+            Uri lightsUri = new Uri(@"avares://Avalonia.Themes.Fluent/FluentLight.xaml");
             
             if (_settings.IsDarkTheme)
-                lightsUri = new Uri(@"avares://Avalonia.Themes.Fluent/Accents/FluentDark.xaml");
+                lightsUri = new Uri(@"avares://Avalonia.Themes.Fluent/FluentDark.xaml");
             
             styles.Add(new StyleInclude(lightsUri)
             {

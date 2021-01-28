@@ -3,8 +3,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-        x:Class="AvaloniaUI.Skinning.Sample.MainWindow"
-        Title="AvaloniaUI.Skinning.Sample">
+        x:Class="AvaloniaUI.Skinning.Sample.Views.MainWindow"
+        Title="AvaloniaUI.Skinning Sample">
     <DockPanel>
         <StackPanel DockPanel.Dock="Left">
             <Button>Button</Button>
@@ -16,9 +16,9 @@
             </ComboBox>
             <TextBox>TextBox</TextBox>
         </StackPanel>
-        <Button x:Name="ApplyButton" DockPanel.Dock="Bottom">Apply</Button>
-        <ContentControl Content="{Binding #SkinsListBox.SelectedItem.SettingsView}" DockPanel.Dock="Right"/>
-        <ListBox x:Name="SkinsListBox" Items="{Binding Skins}">
+        <Button x:Name="ApplyButton" DockPanel.Dock="Bottom" Command="{Binding ApplySkinCommand}" CommandParameter="{Binding SelectedSkin}">Apply</Button>
+        <ContentControl Content="{Binding SelectedSkin.SettingsView, Mode=OneWay}" DockPanel.Dock="Right"/>
+        <ListBox x:Name="SkinsListBox" Items="{Binding SkinManager.Skins}" SelectedItem="{Binding SelectedSkin}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding DisplayName}"/>

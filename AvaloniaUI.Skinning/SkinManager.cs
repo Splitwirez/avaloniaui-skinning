@@ -5,6 +5,7 @@ using System;
 using System.ComponentModel;
 using System.Collections.ObjectModel;
 using System.Runtime.CompilerServices;
+using System.Linq;
 
 namespace AvaloniaUI.Skinning
 {
@@ -53,15 +54,17 @@ namespace AvaloniaUI.Skinning
             }
         }
 
-        public SkinManager() {}
-
-        public SkinManager(bool useAvaloniaBuiltInThemeSkins = true) : this()
+        public SkinManager(bool useAvaloniaBuiltInThemeSkins = true)
         {
             if (useAvaloniaBuiltInThemeSkins)
             {
                 Skins.Add(new FluentSkin());
                 Skins.Add(new AvaloniaDefaultSkin());
             }
+
+            var skn = Skins.FirstOrDefault();
+            if (skn != null)
+                ApplySkin(skn);
         }
 
         protected void NotifyPropertyChanged([CallerMemberName]string propertyName = "") => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
